@@ -115,6 +115,7 @@ class BacktestingEngine:
         self.pricetick = 0
         self.capital = 1_000_000
         self.mode = BacktestingMode.BAR
+        # self.mode = BacktestingMode.TICK
         self.inverse = False
 
         self.strategy_class = None
