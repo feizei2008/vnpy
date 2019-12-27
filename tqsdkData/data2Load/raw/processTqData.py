@@ -62,7 +62,7 @@ names = find_csv_names(currentPath)
 
 for name in names:
     raw = pd.read_csv(os.path.join(currentPath, name))
-    # process_bar_df(raw).to_csv(os.path.join(destinationPath, name))  # bar data
-    process_tick_df(raw).to_csv(os.path.join(destinationPath, name))  # tick data
+    process_bar_df(raw).to_csv(os.path.join(destinationPath, name))  # bar data
+    # process_tick_df(raw).to_csv(os.path.join(destinationPath, name))  # tick data
 
 

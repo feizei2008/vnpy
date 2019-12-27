@@ -73,6 +73,17 @@ class BacktesterEngine(BaseEngine):
         event.data = msg
         self.event_engine.put(event)
 
+    # def write_log(self, msg: str, strategy: CtaTemplate = None):
+    #     """
+    #     by zcy，参考cta_strategy.engine.py，上面的是原本write_log函数
+    #     """
+    #     if strategy:
+    #         msg = f"{strategy.strategy_name}: {msg}"
+    #
+    #     event = Event(EVENT_BACKTESTER_LOG)
+    #     event.data = msg
+    #     self.event_engine.put(event)
+
     def load_strategy_class(self):
         """
         Load strategy class from source code.

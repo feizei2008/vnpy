@@ -314,6 +314,7 @@ class ArrayManager(object):
         self.low_array = np.zeros(size)
         self.close_array = np.zeros(size)
         self.volume_array = np.zeros(size)
+        self.dt_array = np.zeros(size)  # by zcy
 
     def update_bar(self, bar):
         """
@@ -328,12 +329,22 @@ class ArrayManager(object):
         self.low_array[:-1] = self.low_array[1:]
         self.close_array[:-1] = self.close_array[1:]
         self.volume_array[:-1] = self.volume_array[1:]
+        self.dt_array[:-1] = self.dt_array[1:]  # by zcy
 
         self.open_array[-1] = bar.open_price
         self.high_array[-1] = bar.high_price
         self.low_array[-1] = bar.low_price
         self.close_array[-1] = bar.close_price
         self.volume_array[-1] = bar.volume
+        self.dt_array[-1] = bar.datetime  # by zcy
+
+    @property
+    def dt(self):
+        """
+        by zcy
+        Get datetime array.
+        """
+        return self.dt_array
 
     @property
     def open(self):
