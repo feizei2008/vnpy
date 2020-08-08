@@ -8,7 +8,8 @@ from vnpy.trader.setting import SETTINGS
 from vnpy.trader.engine import MainEngine
 
 from vnpy.gateway.ctp import CtpGateway
-from vnpy.app.cta_strategy import CtaStrategyApp
+# from vnpy.app.cta_strategy import CtaStrategyApp
+from vnpy.app.data_recorder import DataRecorderApp
 from vnpy.app.cta_strategy.base import EVENT_CTA_LOG
 
 
@@ -17,12 +18,24 @@ SETTINGS["log.level"] = INFO
 SETTINGS["log.console"] = True
 
 
+# ctp_setting = {
+#     "用户名": "",
+#     "密码": "",
+#     "经纪商代码": "9999",
+#     "交易服务器": "180.168.146.187:10130",
+#     "行情服务器": "180.168.146.187:10131",
+#     "产品名称": "simnow_client_test",
+#     "授权编码": "0000000000000000",
+#     "产品信息": "simnow_client_test"
+# }
+
+
 ctp_setting = {
     "用户名": "",
     "密码": "",
-    "经纪商代码": "",
-    "交易服务器": "",
-    "行情服务器": "",
+    "经纪商代码": "2070",
+    "交易服务器": "180.169.112.50:42205",
+    "行情服务器": "180.169.112.50:42213",
     "产品名称": "",
     "授权编码": "",
     "产品信息": ""
@@ -38,7 +51,8 @@ def run_child():
     event_engine = EventEngine()
     main_engine = MainEngine(event_engine)
     main_engine.add_gateway(CtpGateway)
-    cta_engine = main_engine.add_app(CtaStrategyApp)
+    # cta_engine = main_engine.add_app(CtaStrategyApp)
+    dr_engine = main_engine.add_app(DataRecorderApp)
     main_engine.write_log("主引擎创建成功")
 
     log_engine = main_engine.get_engine("log")
@@ -50,15 +64,15 @@ def run_child():
 
     sleep(10)
 
-    cta_engine.init_engine()
-    main_engine.write_log("CTA策略初始化完成")
+    # cta_engine.init_engine()
+    # main_engine.write_log("CTA策略初始化完成")
 
-    cta_engine.init_all_strategies()
-    sleep(60)   # Leave enough time to complete strategy initialization
-    main_engine.write_log("CTA策略全部初始化")
+    # cta_engine.init_all_strategies()
+    # sleep(60)   # Leave enough time to complete strategy initialization
+    # main_engine.write_log("CTA策略全部初始化")
 
-    cta_engine.start_all_strategies()
-    main_engine.write_log("CTA策略全部启动")
+    # cta_engine.start_all_strategies()
+    # main_engine.write_log("CTA策略全部启动")
 
     while True:
         sleep(1)

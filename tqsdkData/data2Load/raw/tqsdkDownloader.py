@@ -5,14 +5,16 @@ from contextlib import closing
 from tqsdk import TqApi, TqSim
 from tqsdk.tools import DataDownloader
 
-start_dt = datetime(2019, 11, 1, 6, 0, 0)
-end_dt = datetime(2019, 12, 7, 16, 0, 0)
-symbols = ['DCE.a2005', 'DCE.b2005', 'DCE.c2005', 'DCE.eg2005', 'DCE.l2005', 'DCE.m2005', 'DCE.p2005', 'DCE.pp2005', \
-           'DCE.v2005', 'DCE.y2005', 'SHFE.ag2002', 'SHFE.bu2006', 'SHFE.fu2005', 'SHFE.hc2005', 'SHFE.rb2005', \
-           'SHFE.sp2005', 'CZCE.CF005', 'CZCE.FG005', 'CZCE.MA005', 'CZCE.OI005', 'CZCE.RM005', 'CZCE.SF005', \
-           'CZCE.SM005', 'CZCE.SR005', 'CZCE.TA005', 'CZCE.UR005', 'CZCE.ZC005']
+start_dt = datetime(2020, 1, 1, 9, 30, 0)
+end_dt = datetime(2020, 5, 29, 15, 0, 0)
+# symbols = ['DCE.a2005', 'DCE.b2005', 'DCE.c2005', 'DCE.eg2005', 'DCE.l2005', 'DCE.m2005', 'DCE.p2005', 'DCE.pp2005',
+#            'DCE.v2005', 'DCE.y2005', 'SHFE.ag2006', 'SHFE.bu2006', 'SHFE.fu2005', 'SHFE.hc2005', 'SHFE.rb2005',
+#            'SHFE.sp2005', 'CZCE.CF005', 'CZCE.FG005', 'CZCE.MA005', 'CZCE.OI005', 'CZCE.RM005', 'CZCE.SF005',
+#            'CZCE.SM005', 'CZCE.SR005', 'CZCE.TA005', 'CZCE.UR005', 'CZCE.ZC005']
+symbols = ['SZSE.159949', 'SZSE.159928', 'SSE.512290', 'SSE.515000', 'SZSE.159905', 'SSE.511380']
 
-api = TqApi(TqSim())
+# api = TqApi(TqSim())
+api = TqApi(_stock=True)
 download_tasks = {}
 # 下载从 2018-01-01 到 2018-09-01 的 SR901 日线数据
 # download_tasks["SR_daily"] = DataDownloader(api, symbol_list="CZCE.SR901", dur_sec=24*60*60,
